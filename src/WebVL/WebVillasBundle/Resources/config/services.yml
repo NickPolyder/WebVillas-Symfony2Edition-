@@ -1,0 +1,7 @@
+parameters:
+#    web_vl_web_villas.example.class: WebVL\WebVillasBundle\Example
+
+services:
+#    web_vl_web_villas.example:
+#        class: %web_vl_web_villas.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

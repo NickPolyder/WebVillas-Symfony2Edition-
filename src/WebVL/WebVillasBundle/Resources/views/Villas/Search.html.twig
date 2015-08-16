@@ -1,0 +1,138 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vill %}
+ {% block Head %}    
+            <title>WebVillas - Search</title>
+               {%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+   {% else %}
+       {%if theme == 1%}
+          <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas2.css')}}" /> 
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+  <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+{% endif %}
+           <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/Forms.css')}}" /> 
+         <script>
+    
+           $(document).ready(function() {
+
+      //get the url for the form
+       var illegalgrchars = /^[\u0374-\u03FF A-Za-z0-9\.\"\'\!\n\t\r\<br\/\>]+$/;
+       var  trchars = document.getElementById('Searcher').value;
+      var url="{{url('_SearchTaker',{'SrchTxt':'srch_pl'})}}";
+      url = url.replace('srch_pl',illegalgrchars.test(trchars)? trchars : '');
+   
+      //start send the post request
+       $.post(url,function(data){
+           //the response is in the data variable
+   
+            if(data != "" ){  
+             $('#output').html(data);
+               
+            }
+          
+           else{
+              //if we got to this point we know that the controller
+              //did not return a json_encoded array. We can assume that           
+              //an unexpected PHP error occured
+              alert("An unexpeded error occured.");
+
+              //if you want to print the error:
+              
+           }
+       //we dont what the browser to submit the form
+      return false;
+   });
+
+
+});
+
+function click_search()
+{
+    var illegalgrchars = /^[\u0374-\u03FF A-Za-z0-9\.\"\'\!\n\t\r\<br\/\>]+$/;
+             var  trchars = document.getElementById('Searcher').value;
+      var url="{{url('_SearchTaker',{'SrchTxt':'srch_pl'})}}";
+      url = url.replace('srch_pl',illegalgrchars.test(trchars)? trchars : '');
+   
+      //start send the post request
+       $.post(url,function(data){
+           //the response is in the data variable
+   
+            if(data != "" ){  
+             $('#output').html(data);
+               
+            }
+          
+           else{
+              //if we got to this point we know that the controller
+              //did not return a json_encoded array. We can assume that           
+              //an unexpected PHP error occured
+              alert("An unexpeded error occured.");
+
+              //if you want to print the error:
+              
+           }
+       //we dont what the browser to submit the form
+      return false;
+   });
+
+
+
+    }
+function click_change(start,end)
+{
+    
+ var illegalgrchars = /^[\u0374-\u03FF A-Za-z0-9\.\"\'\!\n\t\r\<br\/\>]+$/;
+             var  trchars = document.getElementById('Searcher').value;
+     var url="{{url('_SearchTaker',{'start':"pl_start",'end':"pl_end",'SrchTxt':"srch_pl"})}}";
+   url = url.replace("pl_start",start);
+   url= url.replace("pl_end",end);
+    url = url.replace('srch_pl',illegalgrchars.test(trchars)? trchars : '');
+   
+      //start send the post request
+       $.post(url,function(data){
+           //the response is in the data variable
+   
+            if(data != "" ){  
+             $('#output').html(data);
+               
+            }
+          
+           else{
+              //if we got to this point we know that the controller
+              //did not return a json_encoded array. We can assume that           
+              //an unexpected PHP error occured
+              alert("An unexpeded error occured.");
+
+              //if you want to print the error:
+              
+           }
+       //we dont what the browser to submit the form
+      return false;
+   });
+}
+</script>
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+         <br/> <br/>
+        <h1>Search....</h1>
+           <br/> <br/>
+           
+           <form id="SearcherForm" name="SearcherForm" method="post">
+               <table class="TableForms">
+                   <tr>
+                       <td>Search.!! </td><td><input type="text" id="Searcher" name="Searcher" value="{{Searchtext|default('')}}" title="Search Villas!!" placeholder="Search Villas!!!" />
+                       <td><input type="button" id="subSearchmit" name="subSearchmit" onclick="click_search()" Value="Search" /></td>
+                            </tr>
+               </table>  </form>
+             <br />
+                
+                <div id="output"></div>
+                 <br />
+    </div>
+    
+{% endblock %}

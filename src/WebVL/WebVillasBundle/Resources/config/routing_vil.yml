@@ -1,0 +1,57 @@
+## Villas Routing.
+
+_Villas:
+    pattern: /
+    defaults: { _controller: WebVLWebVillasBundle:Villas:Villas }
+    schemes:  [http]
+
+_ShowVilla:
+    pattern: /Show/{id}
+    defaults: {_controller: WebVLWebVillasBundle:Villas:ShowVilla, id: -1}
+    schemes: [http]
+    
+_villataker:
+    pattern: /Taker/{start}/{end}
+    defaults: { _controller: WebVLWebVillasBundle:Villas:TakeVillas, start: 1, end: 5}
+    schemes:  [http]
+    
+_AddVilla:
+    pattern: /Add/
+    defaults: { _controller: WebVLWebVillasBundle:Villas:add }
+    schemes:  [https]
+    
+_AddVillaCheck:
+    pattern: /Add/Check
+    defaults: { _controller: WebVLWebVillasBundle:Villas:AddCheck }
+    schemes:  [https]
+    
+_EditVilla:
+    pattern: /Edit/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Villas:Edit, id: -1}
+    schemes:  [https]
+    
+_EditVillaCheck:
+    pattern: /Edit/Check/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Villas:CheckEdit, id: -1}    
+    schemes:  [https]
+     
+_DeleteVilla:
+    pattern: /Delete/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Villas:Delete, id: -1 }
+    schemes:  [https]
+    
+_DeleteVillaCheck:
+    pattern: /Delete/Check/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Villas:DeleteCheck, id: -1 }
+    schemes:  [https]
+     
+     
+_mapVilla:
+    pattern: /Map/
+    defaults: { _controller: WebVLWebVillasBundle:Villas:map}
+    
+    
+    
+_my_app_greeting:
+    pattern: /greet/
+    defaults: { _controller: WebVLWebVillasBundle:Villas:greet }

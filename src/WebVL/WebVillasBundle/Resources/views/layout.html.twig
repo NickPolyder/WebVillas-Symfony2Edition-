@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="{{ asset('bundles/webvlwebvillas/js/jquery.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/webvlwebvillas/js/funcs.js')}}">
+</script>
+
+           {% if app.user.theme|default(-1)!= -1 %}
+               {% set theme = app.user.theme|default(0) %}
+             
+            {% else %}
+            {%if app.request.cookies.get('theme')|default(null) != null%}
+{% set theme = app.request.cookies.get("theme") %}
+{%else%}
+{% set theme = 0 %}  
+           {% endif %}
+           {% endif%}
+{%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/layoutcss.css')}}" />
+   {% else %}
+       {%if theme == 1%}
+            <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/layout2.css')}}" />
+          
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+     <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/layoutcss.css')}}" />
+{% endif %}
+        {% block Head %}    
+            <title>WebVillas - Home</title>
+            
+            {%endblock %} 
+    </head>
+    
+    <body>
+        <div id="Container">
+            <div id="Header">
+  
+                <a href="{{ path('_homepage')}}"><img src="{{ asset('bundles/webvlwebvillas/images/header.png')}}" style="width: 100%;" /></a>
+
+                <div id="statusbar">
+                    <span id="Searchspan"><form id="SearchForm" action="{{path('_Search')}}" name="SearchForm" method="GET">
+                            <input type="text" id="SearchBox" name="SearchBox" value="" title="Search Villas!!" placeholder="Search Villas!!!" /><input type="submit" id="subSearchmit" name="subSearchmit" Value="Search" />
+                        </form></span>
+                     <span id="loginRegister">
+                         {% if app.user.username|default(null) != null %}
+                             <ul><a href="{{path('_Account')}}"><li>{{app.user.username}}</li></a>
+                                    <a href="{{path('_LogOut')}}"><li>Log Out</li></a></ul>
+                    {% else %}
+                       <ul><a href="{{path('_log_in')}}"><li>Login</li></a> <span style="font-size: xx-large;">/</span> <a href="{{path('_Register')}}"><li>Register</li></a></ul>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+                <div id="CenterContain">
+                  
+            <div id="Menu">
+                <ul> 
+                    <a href="{{ path('_homepage')}}"><li>Home</li></a>
+                   <a href="{{path('_Contact')}}"><li>Contact</li></a>
+                 <a href="{{path('_Villas')}}"><li>Villas</li></a>
+                   <a href="{{path('_webService')}}"><li>WebService</li></a>  
+                    
+                </ul>
+                <br/>
+            </div>
+            <div id="Main">
+        {% block MainCont %}  
+        <br/><br/><br/><br/>
+        {% endblock %}
+            </div>
+                </div>
+           
+            <div id="Footer">
+                <br/>
+                <span><form id="Theme" action="{{path('_theme')}}" method="post">
+                            <label for="SelectTheme">Themes</label><select id = "SelectTheme" name="SelectTheme">
+                                {% if theme == 0 %}
+                                <option value="0" selected="selected"> Default</option>
+                                <option value="1"> Green </option>
+                                {%else%}
+                                     <option value="0" > Default</option>
+                                    <option value="1" selected="selected"> Green </option>
+                                    {% endif%}
+                                
+                            </select><button type="submit" >Change It</button></form></span>
+                                    <br/>
+                <span style="margin:0 auto; text-align: center; font-size: larger;"> Copyrights {{"now"|date('Y')}} - Νικόλαος Πολυδερόπουλος </span>
+                <span style="text-align: right; float:right; margin: 0 0.5em 0; font-size: large;">Server Date: {{"now"|date('d - D / M / Y')}} - Time {{"now"|date('H:i:s',"Europe/Athens")}}</span>
+                
+            <br/><br/>
+            
+            </div>
+        </div>
+    </body>
+</html>

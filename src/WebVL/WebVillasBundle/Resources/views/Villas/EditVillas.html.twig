@@ -1,0 +1,145 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vill %}
+ {% block Head %}    
+            <title>WebVillas - Edit Villa</title>
+          {%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+   {% else %}
+       {%if theme == 1%}
+          <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas2.css')}}" /> 
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+  <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+{% endif %}
+<link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/Forms.css')}}" /> 
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+ <script>
+   
+function initialize() {
+    var marker;
+var x= document.getElementById("GeoX").value;
+var y= document.getElementById('GeoY').value;
+var myCenter = new google.maps.LatLng(x,y);
+var Name = 'Location ' + document.getElementById('EditVilForm_address').value;
+  
+        var mapOptions = {
+    zoom: 6,
+    center: myCenter,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  marker = new google.maps.Marker({
+  position:myCenter,
+  title: Name
+  });
+marker.setMap(map);
+    
+  google.maps.event.addListener(map, 'click', function(e) {
+  var x = ""+e.latLng+ "";
+  var y = x.split(",");
+  var lat = y[0].split("(");
+  var Lng = y[1].split(")");
+  document.getElementById('GeoX').value= lat[1]; 
+  document.getElementById('GeoY').value =Lng[0];
+  
+if(marker)
+    {
+        marker.setPosition(e.latLng);
+    }else{
+  marker = new google.maps.Marker({
+  position:e.latLng,
+  title: 'Your Business Location'
+  });
+marker.setMap(map);
+    }
+    
+ 
+  });
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+   
+</script>
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+        <br/>
+        <h1>Edit Villa</h1>
+           <br/>
+          
+     
+       
+     {#  #}
+     {% if form != null %}
+           {{ form_start(form,{'action': path('_EditVillaCheck',{'id':idval|default(-1)}),'method':'POST','attr':{'onsubmit':'return validate_addvilla()'}}) }}
+       <div class="errors"> {{ form_errors(form) }} </div>
+       {% if statere|default(-1) != -1 %}
+           <div class="errorrs">{{statere}}</div>
+       {% endif %}
+ <table class="TableForms">
+<tr>
+    <td><input type="hidden" id="id_vil" name="id_vil"  value="{{idval|default(-1)}}" /> </td>
+</tr>
+     <tr>
+    <td>{{ form_label(form.size) }}</td><td>{{ form_widget(form.size) }}</td><td><span id="Sizeerr" class="error"></span></td>
+</tr> 
+<tr>
+<td>{{ form_label(form.rooms) }}</td><td>{{ form_widget(form.rooms) }}</td><td><span class="error" id="Roomerr"></span></td>
+</tr>
+<tr>
+<td>{{ form_label(form.restrooms) }}</td><td>{{ form_widget(form.restrooms) }}</td><td><span class="error" id="restrmerr"></span></td>
+</tr>
+<tr>
+<td>{{ form_label(form.view) }}</td><td>{{ form_widget(form.view) }}</td><td><span class="error" id="viewerr"></span></td>
+</tr>
+ <tr>
+<td>{{ form_label(form.address) }}</td><td>{{ form_widget(form.address) }}</td><td><span class="error" id="addreserr"></span></td>
+</tr>
+<tr>
+<td>{{ form_label(form.price) }}</td><td>{{ form_widget(form.price) }}</td><td><span class="error" id="priceerr"></span></td>
+</tr>
+{{vill.State(Query|default(-1),selected|default(-1))}}
+<tr>
+    <td>{{ form_label(form.details) }}</td><td colspan="2">{{ form_widget(form.details) }}</td><td><span class="error" id="Detailerr"></span></td>
+</tr>
+        <tr><td>
+                <br/>
+                Villa's Location
+    </td>
+            <td style="width: 15em; height: 15em;">
+                <div><div id="map-canvas"></div></div></td><td><span class="error" id="GeoLocErr"></span>
+            </td>
+        
+        </tr>
+<tr>
+<td></td><td>{{ form_widget(form.geoX,{'id':'GeoX'}) }}</td>
+</tr>
+<tr>
+<td></td><td>{{ form_widget(form.geoY,{'id':'GeoY'}) }}</td>
+</tr>
+<tr><td></td><td colspan="2">Provide?!</td></tr>
+<tr>
+    <td>{{ form_label(form.parking) }}</td><td>{{ form_widget(form.parking,{'type':'number','attr':{'min':'0','value':ParkValue|default(0),'style':'padding:0.5em;'}}) }}</td><td><span class="error" id="Parkerror"></span></td>
+</tr>
+<tr>
+    <td>{{ form_label(form.pool) }}{{ form_widget(form.pool) }}</td>
+    <td>{{ form_label(form.sauna) }}{{ form_widget(form.sauna) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(form.gym) }}{{ form_widget(form.gym) }}</td>
+</tr>
+<tr><td class="buttons"></td><td class="buttons">{{ form_widget(form.Edit) }}  {{ form_widget(form.Reset) }}</td></tr>
+</table> 
+
+{{ form_end(form) }} 
+            
+{% endif %}         
+    </div>
+    {% endblock %}

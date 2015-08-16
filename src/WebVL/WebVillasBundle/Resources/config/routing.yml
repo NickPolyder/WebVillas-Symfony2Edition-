@@ -1,0 +1,47 @@
+_homepage:
+    pattern:  /
+    defaults: { _controller: WebVLWebVillasBundle:Default:index }
+    schemes:  [http]
+
+_theme:
+    pattern: /theme
+    defaults: { _controller: WebVLWebVillasBundle:Default:Theme  }
+_Contact:
+    pattern:  /Contact/
+    defaults: { _controller: WebVLWebVillasBundle:Default:Contact }
+    schemes:  [http]
+
+_test:
+    pattern: /TestCreator/
+    defaults: { _controller: WebVLWebVillasBundle:Default:CreateTest }
+    schemes:  [https]
+     
+_Reg:
+    resource: "@WebVLWebVillasBundle/Resources/config/routing_reg.yml"
+
+_log:
+    resource: "@WebVLWebVillasBundle/Resources/config/routing_log.yml" 
+    
+_vil:
+    resource: "@WebVLWebVillasBundle/Resources/config/routing_vil.yml" 
+    prefix: /Villas/
+ 
+ 
+_WebServices:
+    resource: "@WebVLWebVillasBundle/Resources/config/routing_websrv.yml" 
+    prefix: /WebServices/
+    
+_Photo:
+    resource: "@WebVLWebVillasBundle/Resources/config/routing_Ph.yml" 
+    prefix: /Photos/
+    
+_Search:
+    pattern: /Search/{stxt}
+    defaults: { _controller: WebVLWebVillasBundle:Default:Search, stxt: "" }
+    
+_SearchTaker:
+    pattern: /Searcher/{start}/{end}/{SrchTxt}
+    defaults: { _controller: WebVLWebVillasBundle:Default:SearchTaker, start: 1, end: 5 , SrchTxt: "" }
+    
+
+

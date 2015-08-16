@@ -1,0 +1,37 @@
+## Login Routing.
+
+_log_in:
+    path: /LogIn/
+    defaults: { _controller: WebVLWebVillasBundle:UserF:LogIn }
+    schemes:  [https]
+
+_login_check:
+       path: /LoginChecked
+       schemes:  [https]
+
+
+#  defaults: { _controller: WebVLWebVillasBundle:UserF:LogCheckIn }
+_LogOut:
+    pattern: /LogOut/
+  #  defaults: { _controller: WebVLWebVillasBundle:UserF:LogOut }
+    schemes:  [https]
+  
+_Account:
+    pattern: /Account
+    defaults: { _controller: WebVLWebVillasBundle:UserF:Account }
+    schemes: [https]
+    
+_updTheme:
+    pattern: /Update/Theme
+    defaults: { _controller: WebVLWebVillasBundle:UserF:ThemeUpd }
+    schemes: [https]
+    
+_updMail:
+    pattern: /Update/Mail
+    defaults: { _controller: WebVLWebVillasBundle:UserF:MailUpd }
+    schemes: [https]
+    
+_updPass:
+    pattern: /Update/Password
+    defaults: { _controller: WebVLWebVillasBundle:UserF:PassUpd }
+    schemes: [https]

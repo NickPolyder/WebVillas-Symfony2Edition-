@@ -1,0 +1,45 @@
+security:
+    encoders:
+        WebVL\WebVillasBundle\Entity\Users: sha1
+            
+    role_hierarchy:
+        ROLE_OWNER: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_OWNER]
+        
+
+   
+
+    providers:
+        main:
+            entity: { class: WebVLWebVillasBundle:Users, property: username}
+#        in_memory:
+#            memory:
+#                users:
+#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        
+        login:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path: _log_in
+                check_path: _login_check
+                default_target_path: _homepage
+                csrf_provider: form.csrf_provider
+            logout:
+                path:   _LogOut
+                target: _homepage
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+   
+            
+    access_control:
+        - { path: /Villas/Add/$, roles: ROLE_USER }
+        - { path: /Villas/Edit/*$, roles: ROLE_OWNER }
+       # - { path: /Contact/$, roles: ROLE_USER }

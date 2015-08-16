@@ -1,0 +1,39 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+ {% block Head %}    
+            <title>WebVillas - Log in </title>
+        
+ <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/Forms.css')}}" /> 
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+        <br/>
+        <h1>Log - In</h1>
+          <br/>
+          {% if Product|default('') != '' %}
+         
+          {{ Product }}
+         
+          {% endif %}
+          {% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+       <form id="LogIn" class="CreateForms" action="{{ path('_login_check') }}" method="POST" name="LogIn" onsubmit="return valid_login()">
+            <table class="TableForms">
+                        <tr>
+                            <td>Username:</td><td><input type="text" placeholder="Username" pattern="^[a-zA-Z0-9_-]+$" id="username" name="_username"  value="{{ last_username }}" size="25" maxlength="45"  /> <span id="Nameerr" class="error"></span></td>
+                        </tr> 
+                        <tr>
+                            <td>Password:</td><td><input type="password" placeholder="Password" pattern="^[a-zA-Z0-9_@!]+$" id="password" name="_password"  value="" size="25" maxlength="45"  /> <span class="error" id="Passerr"></span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="ResetPassword.php" target="_self">Forgot Password?</a></td>
+                        </tr>
+                        <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}" />
+                        <tr><td class="buttons"></td><td class="buttons"><input id="submit" name="submit" type="submit" value="Submit" />
+                      <input id="reset" name="reset" type="Reset" value="Reset" /></td></tr>
+                    </table> 
+        </form>
+  <br/>
+    <br/>
+    </div>
+    {% endblock %}

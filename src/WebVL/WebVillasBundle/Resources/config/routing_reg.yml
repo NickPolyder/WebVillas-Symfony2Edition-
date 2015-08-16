@@ -1,0 +1,21 @@
+## Register Routing
+
+_Register:
+    pattern: /Register/
+    defaults: { _controller: WebVLWebVillasBundle:UserF:Register }
+    schemes:  [https]
+
+_Reg_Check:
+       pattern: /RegChecked/
+       defaults: { _controller: WebVLWebVillasBundle:UserF:Registed } 
+       schemes:  [https]
+      
+_Reg_Activation:
+       pattern: /RegActivationCode/{usern}/{Activation}
+       defaults: { _controller: WebVLWebVillasBundle:UserF:ActivateCode, Activation:null } 
+       schemes:  [https]
+       
+_Reg_ActiveCode_Check:
+       pattern: /RegActiveCodeCheck/
+       defaults: { _controller: WebVLWebVillasBundle:UserF:ActivateCheckCode } 
+       schemes:  [https]

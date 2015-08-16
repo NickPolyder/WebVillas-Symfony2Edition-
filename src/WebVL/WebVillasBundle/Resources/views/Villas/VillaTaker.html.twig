@@ -1,0 +1,49 @@
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vi %}
+<html>
+<div class="pagination">
+ 
+
+<a onclick='click_change(1,document.getElementById("Records").value)'> First </a>
+{% for i in 1..pages %}
+   
+    {%if curpage|default(1) == i %}
+<a>{{i}}</a>
+{% else%}
+    <a onclick='click_change({{i}},document.getElementById("Records").value)'>{{i}}</a>
+{% endif%}
+{% endfor %}
+<a onclick='click_change({{pages}},document.getElementById("Records").value)'> Last </a>
+
+</div><label for="Records">Records/Page</label><select id="Records" >
+    {%if recs|default(5) == 5%}
+    <option selected="selected"  value="5"  >5</option>
+    {% else %}
+         <option  value="5" >5</option>
+    {% endif %}
+    {%if recs|default(5) == 10%}
+    <option selected="selected"  value="10" >10</option>
+    {% else %}
+         <option value="10" >10</option>
+    {% endif %}
+     {%if recs|default(5) == 15%}
+    <option selected="selected"  value="15" >15</option>
+    {% else %}
+         <option value="15" >15</option>
+    {% endif %}
+</select><button onclick='click_change(1,document.getElementById("Records").value)'>Change It</button>
+    <br/>
+{{vi.villas(Villas)}}
+
+<div class="pagination">
+    <a onclick='click_change(1,document.getElementById("Records").value)'> First </a>
+{% for i in 1..pages %}
+{%if curpage|default(1) == i %}
+<a>{{i}}</a>
+{% else%}
+    <a onclick='click_change({{i}},document.getElementById("Records").value)'>{{i}}</a>
+{% endif%}
+{% endfor %}
+<a onclick='click_change({{pages}},document.getElementById("Records").value)'> Last </a>
+</div>
+
+<br/>

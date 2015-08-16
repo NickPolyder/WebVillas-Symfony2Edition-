@@ -1,0 +1,169 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1 Ιουν 2014, 6:24:44 μμ
+    Author     : NIKOLAS
+*/
+/* Bar Tool and Add Edit Delete Menu */
+#bartool {
+    border: 2px solid #000000;
+    margin: 0 auto;
+    padding: 1em 0;
+    width: 40%;
+}
+#bartool ul
+{
+     list-style-type: none;
+    padding:  0;
+    text-decoration: none;
+    margin: 0;
+    text-align: center;
+}
+#bartool ul li {
+    display: inline;
+    padding: 0.2em;
+  
+    text-decoration: none;
+}
+#bartool ul a li:hover {
+    background-color: #414040;
+}
+#bartool ul a:hover li {
+    color: #B3B3B3;
+}
+#bartool a {
+    color: #FFFFFF;
+    font-size: larger;
+    text-decoration: none;
+}
+#bartool ul a:active li {
+    color: #363636;
+}
+#bartool ul a li:active {
+    background-color: #C7C7C7;
+}
+/* End Bar Tool and Add Edit Delete Menu */
+
+
+.VillasMainSite
+{
+    padding:0;
+    margin:0 auto;
+}
+
+.VillasMainSite table
+{
+    padding:0;
+    margin:0 auto;
+    width: 90%;
+}
+
+.VillasMainSite table tr
+{
+    padding:2em 0 2em 0;
+    margin:0 auto;
+  
+}
+.VillasMainSite table tr.CaptionNam{
+    padding:0;
+    background-color: #333333;
+    color: white;
+}
+.VillasMainSite table tr.CaptionDesc
+{
+    padding: 0;
+    background-color: #333333;
+    color: white;
+}
+.VillasMainSite table tr.CaptionDesc a
+{
+    padding: 0 1em;
+   
+    color: white;
+}
+.VillasMainSite table tr.alt
+{
+    background-color: #cccccc;
+    color: black; 
+}
+.VillasMainSite table tr.alt a
+{
+  
+    color: black; 
+}
+.edittd
+{
+    width:10%;
+}
+
+#map-canvas
+{
+    height: 15em;
+    margin: 0;
+    padding: 0;
+    width: 15em;
+
+}
+
+.success
+{
+    list-style-type: none;
+    margin: 0px auto;
+    text-align: center;
+    border: 0.3em dashed rgb(112, 122, 171);
+    background: none repeat scroll 0px 0px rgb(144, 154, 205);
+    padding: 0.81em; 
+    font-size: large; 
+}
+
+.errorrs
+{
+    list-style-type: none;
+    margin: 0px auto;
+    text-align: center;
+    border: 0.3em dashed rgb(100, 0, 0);
+    background: none repeat scroll 0px 0px rgb(128,0 , 0);
+    padding: 0.81em; 
+    font-size: large;
+}
+
+.pagination
+{
+    text-align: center;
+    padding: 1em;
+    margin: 0;
+    font-size: x-large;
+    
+}
+
+.pagination a:hover
+{
+    padding: 0.2em;
+    border: solid 2px blue;
+   color: blue; 
+   cursor:pointer;
+}
+
+/* ---------------------------------- Images --------------------- */
+
+.image
+{
+    padding:0;
+    margin:0;
+}
+.description
+{
+    padding: 0;
+    margin: 0.1em 0 2em 2em;
+    font-size: larger;
+    text-align: left;
+}
+#Photos
+{
+    height: 20em;
+    width: 100%;
+    overflow: auto;
+}

@@ -1,0 +1,23 @@
+_AddPhoto:
+    pattern: /Add
+    defaults: { _controller: WebVLWebVillasBundle:Ph:AddP }
+    
+_AddCheckPhoto:
+    pattern: /Add/Check
+    defaults: { _controller: WebVLWebVillasBundle:Ph:AddPCheck }
+    
+_EditPhoto:
+    pattern: /Edit/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Ph:Edit, id: -1}
+   
+_EditCheckPhoto:
+    pattern: /Edit/Check/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Ph:EditCheck, id: -1}
+    
+_DeletePhoto:
+    pattern: /Delete
+    defaults: { _controller: WebVLWebVillasBundle:Ph:Delete }
+    
+_DelPhotoCheck:
+    pattern: /Delete/Check/{id}
+    defaults: { _controller: WebVLWebVillasBundle:Ph:DeleteCheck, id: -1}

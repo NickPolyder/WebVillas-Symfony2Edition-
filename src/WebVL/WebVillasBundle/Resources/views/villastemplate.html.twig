@@ -1,0 +1,133 @@
+{% macro villas(Villas) %}
+<div class="VillasMainSite">
+    <br/>
+            <table>
+                {% set i = 1 %}
+                {% for villa in Villas %}
+              {%  if i % 2 == 0 %}
+               <tr class="CaptionNam"><td colspan="3">Address: {{villa.address|default('value') }} </td></tr>
+                <tr class="CaptionDesc"><td>
+                        Price: {{villa.Price|default('No price') }} <br/>
+                        State: {{villa.states.state|default('No State') }} <br/>
+                    </td><td><a href="{{path('_ShowVilla',{'id':villa.idVillas})}}">Full View</a>
+                        </td></tr>
+                
+                <tr style="display: hidden;"><td colspan="2" ></td></tr>
+                {% else %}
+<tr class="CaptionNam alt"><td colspan="2">Address: {{villa.address|default('value') }}</td></tr>
+<tr class="CaptionDesc alt"> <td> Price: {{villa.Price|default('No price') }} <br/>
+                        State: {{villa.states.state|default('No State') }} <br/>
+                    </td><td><a href="{{path('_ShowVilla',{'id':villa.idVillas})}}">Full View</a>
+                        </td></tr>
+                
+                {% endif %}
+                {% set i = i + 1 %}
+                {%   endfor %}
+            </table>
+            <br/>
+        </div>
+            
+{% endmacro %}
+
+{% macro State(Query,selected,way) %}
+      {% if way|default(-1) == -1 %}
+    <tr> <td>State</td><td>
+             <select id="State" name="_State" >
+                 {% if selected|default(-1) == -1 %}
+           <option value="-1" selected="selected"   >-----------State-----------</option>
+           {% if Query|default(-1) != -1 %}
+          {% for states in Query %}
+              
+ <option value="{{states.id}}"   >{{ states.state }}</option>
+      {% endfor %}
+{% endif %}
+                 {% else %}
+                      <option value="-1">-----------State-----------</option>
+           {% if Query|default(-1) != -1 %}
+          {% for states in Query %}
+                {% if selected|default(-1) == states.id %}
+ <option value="{{states.id}}" selected="selected">{{ states.state }}</option>
+ {% else %}
+      <option value="{{states.id}}">{{ states.state }}</option>
+ {% endif %}
+      {% endfor %}
+{% endif %}
+                 {% endif %}
+
+             </select><span class="error" id="stateerr"></span>
+        </td>
+       
+    </tr>
+    {% else %}
+        
+     <tr> <td>State</td><td>
+             <select id="State" name="_State" onchange="return StateSearch()">
+                 {% if selected|default(-1) == -1 %}
+           <option value="-1" selected="selected"   >-----------State-----------</option>
+           {% if Query|default(-1) != -1 %}
+          {% for states in Query %}
+              
+ <option value="{{states.state}}"   >{{ states.state }}</option>
+      {% endfor %}
+{% endif %}
+                 {% else %}
+                      <option value="-1">-----------State-----------</option>
+           {% if Query|default(-1) != -1 %}
+          {% for states in Query %}
+                {% if selected|default(-1) == states.id %}
+ <option value="{{states.state}}" selected="selected">{{ states.state }}</option>
+ {% else %}
+      <option value="{{states.state}}">{{ states.state }}</option>
+ {% endif %}
+      {% endfor %}
+{% endif %}
+                 {% endif %}
+
+             </select><span class="error" id="stateerr"></span>
+        </td>
+       
+    </tr>
+    {% endif %}
+{% endmacro %}
+
+{% macro photos(photo,edit)%}
+      <h2 style='text-align: center;'>Photo's</h2>
+    <div id='Photos'>
+      
+   
+         {%if photo|default(-1) != -1%}
+       
+             {%if edit|default(-1) == -1%}
+       
+        {%for img in photo%}
+                  <div class='image'>
+                                <a href='{{asset('bundles/webvlwebvillas/images/UserImages/'~img.filename)}}' target='_blank'>
+      <img src="{{asset('bundles/webvlwebvillas/images/UserImages/'~img.filename)}}" alt='{{img.description}}' width="40%" height="auto"/>
+                                </a>
+                            </div><div class='description'>
+                                {{img.description}}
+                            </div>
+       {%endfor%}
+       {%else%}
+           <table>
+               {%for img in photo%}
+                <tr><td>   <div class='image'>
+                                <a href='{{asset('bundles/webvlwebvillas/images/UserImages/'~img.filename)}}' target='_blank'>
+      <img src="{{asset('bundles/webvlwebvillas/images/UserImages/'~img.filename)}}" alt='{{img.description}}' width="40%" height="auto"/>
+                                </a>
+                            </div><div class='description'>
+                                {{img.description}}
+                            </div></td>
+                            <td>{%if edit == 2%} <a href='{{path("_DelPhotoCheck",{"id":img.id})}}' onclick="return confirm('Are you sure you Want to Delete this  Record?!')">Delete</a>{%endif%}<br/>
+                                {%if edit == 1%} <a href='{{path("_EditPhoto",{"id":img.id})}}'>Edit</a>{%endif%}</td><td style='width:2em;'></td></tr>
+       {%endfor%}
+              
+           </table>
+           
+           {% endif%}
+        {% else %}
+        No Photo's
+        {% endif%}
+   
+    </div>
+ {% endmacro %}

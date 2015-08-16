@@ -1,0 +1,47 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vill %}
+ {% block Head %}    
+            <title>WebVillas - Delete Villa's</title>
+             {%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+   {% else %}
+       {%if theme == 1%}
+          <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas2.css')}}" /> 
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+  <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+{% endif %}
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+         <br/>
+        <h1>Delete Villa</h1>
+           <br/>
+           
+        <div class="VillasMainSite" style="font-size: larger;">
+            <table>
+            
+                <tr class="CaptionNam"><td colspan="3">Address: {{villa.address|default('value') }} </td></tr>
+                <tr class="CaptionDesc"><td> Description: {{villa.details|default('None Description')}} <br/>
+                        Price: {{villa.Price|default('No price') }} <br/>
+                        Size: {{villa.size|default('Zero')}} <br/>
+                        Rooms: {{villa.rooms|default('Zero')}} <br/>
+                        Restrooms: {{villa.restrooms|default('Zero')}} <br/>
+                        View: {{villa.view|default('No View')}} <br/>
+                        State: {{villa.states.state|default('No State') }} <br/>
+                        </td><td>Parking: {{ Avail.parking|default('No')}} <br/>
+                        Pool: {% if Avail.pool|default(0) != 0 %} Yes! {% else %} No! {% endif%} <br/>
+                        Gym: {% if Avail.gym|default(0) != 0 %} Yes! {% else %} No! {% endif%} <br/>
+                        Sauna: {% if Avail.sauna|default(0) != 0 %} Yes! {% else %} No! {% endif%} <br/>
+                        </td><td  class="edittd" ><a href="{{path('_DeleteVillaCheck',{'id':villa.idVillas})}}" onclick="return confirm('Are you sure you Want to Delete the Record with Name: {{villa.address|default('value') }}')"> Delete!</a>  <br/> <a href="{{path('_Villas')}}">Return!</a></td></tr>
+                
+                
+               
+            </table>
+            
+        </div>
+    </div>
+    {% endblock %}

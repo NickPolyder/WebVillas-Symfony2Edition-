@@ -1,0 +1,122 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vill %}
+ {% block Head %}    
+            <title>WebVillas - Villa's</title>
+           {%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+   {% else %}
+       {%if theme == 1%}
+            <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas2.css')}}" /> 
+          
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+  <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+{% endif %}
+           
+
+
+         <script>
+    
+           $(document).ready(function() {
+
+      //get the url for the form
+      
+      var url="{{url('_villataker')}}";
+   
+      //start send the post request
+       $.post(url,function(data){
+           //the response is in the data variable
+   
+            if(data != "" ){  
+             $('#output').html(data);
+               
+            }
+          
+           else{
+              //if we got to this point we know that the controller
+              //did not return a json_encoded array. We can assume that           
+              //an unexpected PHP error occured
+              alert("An unexpeded error occured.");
+
+              //if you want to print the error:
+              
+           }
+       //we dont what the browser to submit the form
+      return false;
+   });
+
+
+});
+
+function click_change(start,end)
+{
+    
+
+     var url="{{url('_villataker',{'start':"pl_start",'end':"pl_end"})}}";
+   url = url.replace("pl_start",start);
+   url= url.replace("pl_end",end);
+      //start send the post request
+       $.post(url,function(data){
+           //the response is in the data variable
+   
+            if(data != "" ){  
+             $('#output').html(data);
+               
+            }
+          
+           else{
+              //if we got to this point we know that the controller
+              //did not return a json_encoded array. We can assume that           
+              //an unexpected PHP error occured
+              alert("An unexpeded error occured.");
+
+              //if you want to print the error:
+              
+           }
+       //we dont what the browser to submit the form
+      return false;
+   });
+}
+</script>
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+         <br/> <br/>
+        <h1>Villa's</h1>
+           <br/> <br/>
+           
+        {% if is_granted('ROLE_USER') %} 
+       {% if app.request.get('Success')|default(-1) != -1 and app.request.get('Success') matches '{^[\'\"\!\+\:\\\/ A-Za-z0-9]+$}'  %}
+       <div class="success">{{app.request.get('Success')}}</div>
+              <br/>
+                     <br/>
+       {% endif %}
+         {% if  app.request.get('Errors')|default(-1) != -1  and app.request.get('Errors') matches '{^[\'\"\:\!\+\\\/ A-Za-z0-9]+$}' %}
+       <div class="errorrs">{{app.request.get('Errors')}}</div>
+       {% endif %}
+     
+        <div id="bartool">
+            <ul>
+                 {% if not is_granted('ROLE_OWNER') %}
+                <a href="{{path('_AddVilla')}}"><li>Add</li></a> 
+                {% endif %} 
+                {% if is_granted('ROLE_OWNER') or is_granted('ROLE_ADMIN') %}
+                <a href="{{path('_AddPhoto')}}"><li>Add Photo</li></a>
+                <a href="{{path('_EditPhoto')}}"><li>Edit Photo</li></a>
+                 <a href="{{path('_DeletePhoto')}}"><li>Delete Photo</li></a>
+                <a href="{{path('_EditVilla')}}"><li>Edit</li></a>
+                <a href="{{path('_DeleteVilla')}}"><li>Delete</li></a>
+                {% endif %}
+            </ul>
+        </div>
+                {% endif %} 
+                <br />
+                
+                <div id="output"></div>
+                 <br />
+        
+    </div>
+    {% endblock %}

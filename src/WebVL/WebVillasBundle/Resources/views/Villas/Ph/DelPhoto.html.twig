@@ -1,0 +1,27 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vill %}
+ {% block Head %}    
+            <title>WebVillas - Delete Photo</title>
+              {%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+   {% else %}
+       {%if theme == 1%}
+           <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas2.css')}}" /> 
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+  <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+{% endif %}
+
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+         <br/> <br/>
+        <h1>Delete Photo's</h1>
+           <br/> <br/>
+           
+           {{vill.photos(photo,2) }}
+    </div>
+ {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% import "WebVLWebVillasBundle::villastemplate.html.twig" as vill %}
+ {% block Head %}    
+            <title>WebVillas - Add Photo</title>
+         {%if  theme matches '{^[0-9]$}'  %}
+{% if  theme == 0 %}
+   <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+   {% else %}
+       {%if theme == 1%}
+           <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas2.css')}}" /> 
+       {% endif %}
+   {% endif%}
+   
+{% else %} 
+  <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/villas.css')}}" /> 
+{% endif %}
+           <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/Forms.css')}}" /> 
+<!--{#<script type="text/javascript" src="{{ asset('bundles/webvlwebvillas/js/jquery.js')}}">
+</script>#} -->
+         
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+         <br/> <br/>
+        <h1>Add Photo</h1>
+           <br/> <br/>
+           {% if Error|default('') != ''%}
+           <div class="errorrs">{{Error|default('')}}</div>
+           {% endif %}
+           {{Phot|default('')}}
+            <form class="CreateForms"  name="Upload" method="post" action="{{path('_AddCheckPhoto')}}" enctype="multipart/form-data" onsubmit="return PhotoCheck()">
+         <table class="TableForms">
+             <tr><td></td></tr>
+             <tr>
+                 
+           <td>Image:</td><td><input type="file"  id="imgFilename" name="imgFilename[]" multiple/></td></tr>
+           <tr> <td>Image Description:</td><td>
+               <textarea id="ImageDescription" placeholder="Write a description for your image" name="ImageDescription" rows="5" cols="25" style="color:black;"></textarea>
+           <span id="DescErr"></span></td>
+             </tr>
+            <tr><td class="buttons"></td><td class="buttons"><input id="Upload" name="Upload" type="submit" value="Upload" /></td></tr>
+                        <tr><td class="buttons"></td><td class="buttons"><input id="reset" name="reset" type="Reset" value="Reset" /></td></tr>
+         </table>
+    </form>
+           
+    </div>
+           {%endblock %}

@@ -1,0 +1,13 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% block Head %}
+    <title>Error -> {{Errors.Name}} </title>
+{% endblock %}
+{% block MainCont %} 
+    <div id="MainContent">
+        <br/>
+            <br/>
+            <div class="Error">
+                {{Errors.Message}}
+            </div>
+    </div>
+{% endblock %}

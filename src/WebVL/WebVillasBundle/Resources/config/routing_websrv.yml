@@ -1,0 +1,7 @@
+_webService:
+    pattern: /
+    defaults: { _controller: WebVLWebVillasBundle:WSV:index }
+    
+_xmltry:
+    pattern: /xml/{id}/{Address}/{State}/{all}
+    defaults: { _controller: WebVLWebVillasBundle:WSV:WebXML, id: -1, Address: '', State: '', all: 1  }

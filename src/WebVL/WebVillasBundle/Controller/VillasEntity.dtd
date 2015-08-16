@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+    TODO define vocabulary identification data
+    PUBLIC ID  : -//vendor//vocabulary//EN
+    SYSTEM ID  : http://server/path/__NAME__
+-->
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT Villas (villa)>
+<!ELEMENT villa (address,size,Restrooms,Rooms,View,Price,Details,State,GeoX,GeoY,user,Pool?,Sauna?,Parking?,Gym?)>
+<!ATTLIST villa id CDATA #REQUIRED>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT size (#PCDATA)>
+<!ELEMENT Restrooms (#PCDATA)>
+<!ELEMENT View (#PCDATA)>
+<!ELEMENT Price (#PCDATA)>
+<!ELEMENT Details (#PCDATA)>
+<!ELEMENT State (#PCDATA)>
+<!ATTLIST State id CDATA #REQUIERED>
+<!ELEMENT GeoX (#PCDATA)>
+<!ELEMENT GeoY (#PCDATA)>
+<!ELEMENT user (#PCDATA)>
+<!ELEMENT Pool (#PCDATA)>
+<!ELEMENT Sauna (#PCDATA)>
+<!ELEMENT Parking (#PCDATA)>
+<!ELEMENT Gym (#PCDATA)>
+

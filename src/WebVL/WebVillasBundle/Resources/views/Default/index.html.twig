@@ -1,0 +1,27 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+{% block MainCont %} 
+    <div id="MainContent">
+        <br/>
+        {% if app.request.get('WelcomeMes')|default(null) != null %}
+            <h1 style="color:red;background-color:black;">  {{app.request.get('WelcomeMes')}} </h1>
+            {% endif%}
+            {% if app.request.get('Registered')|default(null) != null %}
+            <h1 style="color:red;background-color:black;">  {{app.request.get('Registered')}} </h1>
+            {% endif%}
+        Hello Master!
+   
+        <br/>
+        
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac dolor luctus, laoreet felis vitae, tristique massa. Donec et tempor libero. Suspendisse potenti. In quis dui id urna congue mollis sit amet in risus. Aliquam rutrum, ante non suscipit ornare, nisi tortor gravida dolor, semper pulvinar enim diam id felis. Cras lorem ante, rhoncus id quam in, tincidunt tempor tortor. Proin ornare, nisi eu pellentesque pulvinar, ante massa placerat turpis, ut ultrices nulla dolor eu arcu. Nulla diam orci, lobortis vitae mi et, ultrices mollis tortor. Integer ligula risus, eleifend ut nibh et, posuere feugiat ligula. Proin pharetra enim vestibulum, hendrerit turpis eget, porttitor urna. Duis iaculis turpis nec neque varius, a condimentum massa dapibus. Nulla pharetra hendrerit malesuada. Sed vitae massa non tortor tincidunt tincidunt cursus sit amet odio. Nulla eu erat risus. In sit amet mollis mi. Duis luctus commodo nisl sed euismod.
+
+Maecenas aliquet felis convallis erat mollis sollicitudin eleifend volutpat mauris. Suspendisse faucibus sodales placerat. Mauris tempor vehicula nisl, id malesuada ante consectetur nec. Sed vel dui eu libero placerat semper. Sed at dui tincidunt, lacinia tellus nec, commodo ipsum. Mauris ac lacinia lectus, et commodo justo. Proin tincidunt, tellus eu consequat pretium, enim turpis semper nibh, id adipiscing risus enim in ipsum. Duis aliquam varius diam. Proin eget convallis lacus. Nulla nec imperdiet ante. Donec sed cursus dui. Duis risus leo, congue sit amet magna eu, pretium aliquet lorem. Vestibulum id lectus felis. In hac habitasse platea dictumst.
+
+Pellentesque sit amet lacus pellentesque, porttitor dolor id, tincidunt mi. Cras euismod leo et dolor tempor, quis lacinia sem sagittis. Maecenas pellentesque augue quis turpis gravida pulvinar. Morbi at tortor purus. Pellentesque molestie est lacus, nec pharetra nunc fringilla id. Donec ac sapien enim. Maecenas neque metus, mattis vel turpis sed, sollicitudin porta risus. Phasellus sagittis tristique nibh et molestie. Nulla bibendum leo non eros iaculis faucibus. Donec in metus ac ligula tempor elementum. Proin eu est magna. Aenean placerat placerat lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Fusce eget suscipit nunc, quis pharetra libero.
+
+Curabitur vulputate vehicula felis at faucibus. Aliquam ultricies dignissim leo, eget interdum eros rutrum mollis. Aenean ut mi pharetra, egestas mi eu, porta nulla. Morbi scelerisque ornare augue ac imperdiet. Nam ac gravida turpis. Quisque nec vehicula leo. Sed gravida, ligula ac sagittis sagittis, erat nibh consequat felis, vulputate tincidunt urna erat sit amet libero. Aliquam tempus mattis leo tempor egestas. In sit amet sapien odio. In viverra mollis justo vitae sollicitudin. Curabitur tortor lacus, tempus in sem ac, pulvinar congue magna. Duis fringilla, eros non fringilla eleifend, dui enim convallis mi, in porta nisi dolor nec augue. Suspendisse cursus diam at nisi tincidunt, et vestibulum diam ornare. Mauris at elit ac leo ultricies porta et ac urna.
+
+Nunc et sodales dolor, a lacinia risus. Curabitur volutpat risus nec eros luctus, imperdiet faucibus lacus fermentum. Etiam quis ornare ligula. Fusce et auctor est. Cras in orci ut nisl dignissim convallis sit amet quis eros. Donec hendrerit mauris at nisl rutrum tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis mollis, ligula eu tempor vehicula, dui massa pellentesque tellus, quis pellentesque mi sem non mauris. Nam eget suscipit lacus. Nullam dolor sem, venenatis ac malesuada sit amet, sagittis sed ligula. <br/>
+    </div>
+    {% endblock %}
+

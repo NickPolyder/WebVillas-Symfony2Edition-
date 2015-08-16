@@ -1,0 +1,39 @@
+{% extends 'WebVLWebVillasBundle::layout.html.twig' %}
+ {% block Head %}    
+            <title>WebVillas - Register </title>
+      
+ <link rel="stylesheet" href="{{asset('bundles/webvlwebvillas/css/Forms.css')}}" /> 
+            {%endblock %} 
+{% block MainCont %} 
+    <div id="MainContent">
+        <br/>
+        <h1>Register</h1>
+           <br/>
+       {{ form_start(form,{'action': path('_Reg_Check'),'method':'POST','attr':{'onsubmit':'return validate_form()'}}) }}
+       <div class="errors"> {{ form_errors(form) }} </div>
+ <table class="TableForms">
+<tr>
+<td>{{ form_label(form.Username) }}</td><td>{{ form_widget(form.Username,{'id':'username','attr':{'placeholder':'Enter Username','size':'30'}}) }}<span id="Nameerr" class="error"></span></td>
+</tr> 
+<tr>
+<td>{{ form_label(form.Password) }}</td><td>{{ form_widget(form.Password,{'id':'password','pattern':'^[a-zA-Z0-9_@!]+$','attr':{'placeholder':'Enter Password','size':'30'}}) }}<span class="error" id="Passerr"></span></td>
+</tr>
+<tr>
+<td>{{ form_label(form.RePassword) }}</td><td>{{ form_widget(form.RePassword,{'id':'RePassword','pattern':'^[a-zA-Z0-9_@!]+$','attr':{'placeholder':'Re enter your password','size':'30'}}) }}<span class="error" id="Repasserr"></span></td>
+</tr>
+<tr>
+<td>{{ form_label(form.Email) }}</td><td>{{ form_widget(form.Email,{'id':'Email','pattern':'^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$','attr':{'placeholder':'E-mail','size':'30'}}) }}<span class="error" id="Mailerr"></span></td>
+</tr>
+ <tr><td>Security Code:</td><td>
+         
+
+     </td><br /></tr>
+		 <tr><td></td><td class="required">{{form_widget(form.captcha,{'id':"security_code",'attr':{'placeholder':'ReCaptcha Code','size':'30'}})}}<span class="error" id="Secerr"></span></td><br />
+                    </tr>
+<tr><td class="buttons"></td><td class="buttons">{{ form_widget(form.Register) }}  {{ form_widget(form.Reset) }}</td></tr>
+</table> 
+
+{{ form_end(form) }} 
+
+    </div>
+    {% endblock %}

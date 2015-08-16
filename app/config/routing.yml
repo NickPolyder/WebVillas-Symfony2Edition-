@@ -1,0 +1,4 @@
+web_vl_web_villas:
+    resource: "@WebVLWebVillasBundle/Resources/config/routing.yml"
+    prefix:   /webvl
+

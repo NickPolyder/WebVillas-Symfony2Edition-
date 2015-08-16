@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="WebVL\WebVillasBundle\Entity\AvailEquipment" table="avail_equipment">
+    <indexes>
+      <index name="fk_Avail_Equipment_Villas1_idx" columns="Villas_id_villas"/>
+    </indexes>
+    <id name="id" type="integer" column="ID"/>
+    <id name="villasVillas" association-key="true"/>
+    <field name="pool" type="boolean" column="Pool" nullable="false"/>
+    <field name="gym" type="boolean" column="Gym" nullable="false"/>
+    <field name="parking" type="integer" column="Parking" nullable="false"/>
+    <field name="sauna" type="boolean" column="Sauna" nullable="false"/>
+    <one-to-one field="villasVillas" target-entity="Villas">
+      <join-columns>
+        <join-column name="Villas_id_villas" referenced-column-name="id_villas"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

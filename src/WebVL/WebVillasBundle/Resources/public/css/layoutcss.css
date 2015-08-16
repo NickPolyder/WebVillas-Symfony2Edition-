@@ -1,0 +1,213 @@
+
+html, body{
+    background-color: black;
+    width: 100%;
+    height:100%;
+    margin:0;
+    padding: 0;
+}
+h1
+{
+    margin:0 auto;
+    padding:0;
+    text-align: center;
+}
+#Container
+{
+    width: auto;
+    padding: 0;
+    margin:0;
+    
+}
+
+#header
+{
+    padding: 0;
+    margin:0;
+    
+}
+/*Status Bar and Contains-----------------------------------------------------------------------------*/
+#statusbar
+{
+    background-color: #555555;
+    padding: 0;
+    margin:0;
+    text-align: right;
+}
+#Searchspan
+{
+    float:left;
+    margin: 0.2em;
+    padding:0.4em;
+}
+#Searchspan input[type=text]
+{
+   padding: 1em 5em;
+   margin:0;
+  
+   
+}
+#Searchspan input[type=submit]
+{
+   padding: 0.9em 0.5em;
+   margin:0;
+  
+   
+}
+#loginRegister {
+    font-size: larger;
+    margin: 0.8em 0.8em 0 0.1em ;
+    padding: 0;
+}
+#loginRegister ul {
+    list-style-type: none;
+    padding:  0;
+    text-decoration: none;
+    margin: 0;
+}
+#loginRegister ul li {
+    display: inline;
+    padding: 1em;
+    text-decoration: none;
+}
+#loginRegister ul a li:hover {
+    background-color: #414040;
+}
+#loginRegister ul a:hover li {
+    color: #B3B3B3;
+}
+#loginRegister a {
+    color: #FFFFFF;
+    font-size: larger;
+    text-decoration: none;
+}
+#loginRegister ul a:active li {
+    color: #363636;
+}
+#loginRegister ul a li:active {
+    background-color: #C7C7C7;
+}
+/* Center Container ----------------------------------------------------------------------------------*/
+
+#CenterContain{
+   
+    display: block;
+    width: 100%;
+}
+
+#Main
+{
+    background-color: #9e9e9e;
+    padding: 0;
+    margin:0;
+    float:right;
+    width:80%;
+    
+}
+#MainContent
+{
+    padding: 0.4em;
+    margin:0.5em;
+}
+/* =-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Menu =-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+#Menu
+{
+    background-color: #222222;
+    padding: 0;
+    margin:0;
+    float: left;
+    width:  20%;
+    text-align:center;
+    
+}
+#Menu ul {
+    list-style-type: none;
+    padding: 1em 0;
+}
+#Menu ul li {
+    margin: 0 auto;
+    padding: 1em 0;
+}
+#Menu ul a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: larger;
+}
+#Menu ul a:hover li {
+    color: #B3B3B3;
+}
+#Menu ul a li:hover {
+    background-color: #414040;
+}
+#Menu ul a:active li {
+    color: #363636;
+}
+#Menu ul a li:active {
+    background-color: #c7c7c7;
+}
+
+
+
+
+/* =-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Footer =-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+#Footer
+{
+    background-color: #555555;
+    padding: 0;
+    margin:0;
+    clear: both;
+    text-align: center;
+}
+
+/* =-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= Errors =-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.Error
+{
+    color: red;
+    padding: 1em;
+    margin:1em;
+    width: 80%;
+    border: solid 4px darkred;
+    font-size: x-large;
+    background-color: black;
+    text-align: center;
+}
+
+/* ----------------------- Account -------------------------------------------- */
+
+.fields
+{
+    margin:0 auto;
+    padding:0.5em 0;
+  
+}
+
+h3
+{
+    margin:0 auto;
+    padding: 0;
+    text-align: center;
+  
+}
+#ThemeDiv
+{
+    margin:0 auto;
+    border: darkgray solid thin;
+    background-color: graytext;
+    padding: 0.3em 0;
+}
+
+#ChangeEmail
+{
+    margin:0 auto;
+   border: darkgray solid thin;
+    background-color:  gray;
+    padding: 0.3em 0; 
+}
+
+#ChangePassword
+{
+    margin:0 auto;
+   border: darkgray solid thin;
+    background-color:  lightgray;
+    padding: 0.3em 0; 
+}

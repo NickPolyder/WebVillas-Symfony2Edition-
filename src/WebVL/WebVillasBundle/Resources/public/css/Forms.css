@@ -1,0 +1,46 @@
+h1
+{
+    margin:0 auto;
+    padding:0;
+    text-align: center;
+}
+
+.TableForms
+{
+    margin:0 auto;
+}
+.TableForms input
+{
+    padding: 0.5em;
+    width: 100%;
+   
+}
+.TableForms input[type=checkbox]
+{
+    padding: 0.5em;
+    width: auto;
+   
+}
+.TableForms select
+{
+    padding: 0.5em;
+    width:100%;
+    text-align: center;
+   
+}
+.errors ul
+{
+    list-style-type: none;
+    margin: 0px auto;
+    text-align: center;
+    border: 0.3em dashed rgb(100, 0, 0);
+    background: none repeat scroll 0px 0px rgb(128,0 , 0);
+    padding: 0.81em; 
+    font-size: large;
+}
+
+#AddVilForm_details{
+    width: 18em;
+    height: 10em;
+}
+
